@@ -1,0 +1,21 @@
+# 此行為第一行指定了構建映像檔所基於的基底映像。
+FROM python:3.12-slim
+
+# 此為設定作為接下來所有指令執行的工作目錄，你可以自定義設置
+WORKDIR <question1>
+
+# 你需要複製當前目錄的 requirements.txt 到你指定的工作目錄中
+COPY <question2> <question3>
+
+# 用於建構映像檔過程中的執行命令，在這裡我們需引入 requirements.txt 來安裝所需的套件
+RUN pip install --no-cache-dir --upgrade pip \
+    && <question4> <question5> --no-cache-dir -r <question6>
+
+# 你需要複製當前目錄的檔案到你指定的工作目錄中
+COPY <question7> <question8>
+
+# 你需要聲明容器的內部使用 port 號
+EXPOSE <question9>
+
+# 容器運行命令
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
